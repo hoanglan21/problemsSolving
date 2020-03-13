@@ -6,9 +6,11 @@ public class leetCode1290 {
 
 	public int getDecimalValue(ListNode head) {
         ArrayList<Integer> values = new ArrayList<Integer>();
-        while (head.next != null) {
-            values.add(head.val);
+        int index = 0;
+        while (head != null) {
+            values.add(index, head.val);
             head = head.next;
+            index++;
         }
         return helperMethod(values);
         
@@ -16,7 +18,7 @@ public class leetCode1290 {
 	
 	public int helperMethod(ArrayList<Integer> values) {
 		int summary = 0;
-		int cal = 0;
+		int cal = 1;
 		for (int index = values.size()-1; index >= 0; index--) {
 			if (values.get(index) == 1) {
 				summary += Math.pow(2, cal);
